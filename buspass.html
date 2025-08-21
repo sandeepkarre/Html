@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TSRTC General Bus Pass Application</title>
+
+</head>
+<body>
+
+  <h2>TELANGANA STATE ROAD TRANSPORT CORPORATION</h2>
+  <h3>GENERAL BUS PASS APPLICATION</h3>
+  <fieldset>
+    <legend>Applicant Details</legend>
+    <label>Name * :</label><input type="text" pattern="[A-Za-z]" maxlength="20" autofocus required><br>
+    <label>Father's / Guardian's Name *:</label><input type="text"  pattern="[A-Za-z]" maxlength="20" required><br>
+    <label>Date of Birth *: </label><input type="date" required><br>
+    <label>Gender *:</label>
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Male"> Male <br>
+    <label>Age As on :</label>
+    <input type="number" placeholder="Years"> 
+    <input type="number" placeholder="Months">
+    <input type="number" placeholder="Days"><br>
+    <label>Aadhaar No:</label><input type="text" pattern="[0-9]{12}" maxlength="12" required><br>
+    <label>WhatsApp No *:</label><input type="text" pattern="[6-9][0-9]{9}" maxlength="10" required><br>
+    <label>E-mail Id *:</label><input type="email" required><br>
+    <label>Photo *:</label><input type="file" accept="png,JPG" required><br>
+</fieldset>
+
+  <fieldset>
+    <legend>Residential Address</legend>
+  
+ 
+    <label>Applicant's Address *:</label><textarea maxlength="20"></textarea><br>
+    <label>District *:</label>
+    <select>
+      <option>HYDERABAD</option>
+      <option>RANGAREDDY</option>
+      <option>MEDCHAL</option>
+    </select><br>
+    <label>Mandal *:</label>
+    <select>
+      <option>HYDERABAD</option>
+    </select><br>
+    <label>Village *:</label>
+    <select>
+      <option>HYDERABAD</option>
+    </select><br>
+    <label>Pincode *:</label><input type="text" pattern="[5][0-9]{5}" required><br>
+
+  </fieldset>
+<fieldset>
+  <legend>Bus Passtype</legend>
+    <label>City *</label>
+    <select>
+      <option>Hyderabad</option>
+    </select><br>
+    <label>Pass Type *:</label>
+    <select>
+      <option>-----Select-----</option>
+      <option>General</option>
+      <option>Student</option>
+      <option>Employee</option>
+    </select><br>
+</fieldset>
+
+  <fieldset><legend>Payment Method</legend>
+    <label>Payment Mode *:</label>
+    <select>
+      <option>Select Payment Mode</option>
+      <option>Online</option>
+      <option>Cash</option>
+    </select><br>
+    <label>Pass Delivery Mode *:</label>
+    <select>
+      <option>Select Pass Delivery Mode</option>
+      <option>Counter</option>
+      <option>Postal</option>
+    </select><br>
+    <label>Center at which you want to Collect Pass *:</label>
+    <select>
+      <option>-----Select-----</option>
+      <option>Secunderabad</option>
+      <option>Koti</option>
+      <option>Mehdipatnam</option>
+    </select><br>
+ </fieldset>
+
+<fieldset>
+  <legend>Captcha</legend>
+ 
+    <span class="captcha">xqnhVK</span>
+    <button type="button">&#x21bb;</button>
+    <input type="text" placeholder="Enter Captcha"><br><br>
+    <input type="checkbox" id="Terms">
+    <label for="Terms"><a href="file:///C:/Users/sande/OneDrive/Pictures/Documents/codesandy1/terms.html" target="blank">Terms and conditions</a></label>
+  
+</fieldset>
+<button class="submit-btn">Submit</button>
+</body>
+</html>
