@@ -7,12 +7,15 @@
 </head>
 <body>
     <form action="submit.html">
-        <label for="Aadhaar">Aadhaar:</label>
-        <input type="text" pattern="[0-9]{12}" id="Aadhaar" required><br>
+ <fieldset>
+    <legend>PERSONAL INFO</legend>
+           <label for="Aadhaar">Aadhaar:</label>
+        <input type="text" pattern="[0-9]{12}" id="Aadhaar" maxlength="12" required><br>
         <label for="Pancard">Pancard:</label>
-        <input type="text" pattern="[A-Z]{5}[0-9]{4}[A-Z]" id="Pancard" required><br>
+        <input type="text" pattern="[A-Z]{5}[0-9]{4}[A-Z]" id="Pancard" maxlength="10" required><br>
         <label for="Bank AC number">Bank AC number:</label>
-        <input type="text" pattern="[0-9]{13}" id="Bank AC number" required><br>
+        <input type="text" pattern="[0-9]{13}" id="Bank AC number" maxlength="14" required><br>
+ </fieldset>
         <input type="submit">
     </form>
 </body>
