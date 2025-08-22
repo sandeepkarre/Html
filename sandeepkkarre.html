@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karre Sandeep | Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f1115;
+      color: #f0f0f0;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: #171923;
+    }
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 3px solid #7c5cff;
+    }
+    header h1 { margin: 20px 0 10px; }
+    header p { color: #aaa; }
+
+    .upload-btn {
+      margin-top: 15px;
+      display: inline-block;
+      background: #2d3145;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: #1f2230;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav button {
+      background: #2d3145;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+    }
+    nav button.active { background: #7c5cff; }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: none;
+      animation: fadeIn .5s;
+    }
+    section.active { display: block; }
+    h2 { color: #7c5cff; }
+    ul { line-height: 1.8; }
+    .skills span {
+      display: inline-block;
+      background: #2d3145;
+      margin: 5px;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+    .contact a { color: #26c6da; text-decoration: none; }
+
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  </style>
+</head>
+<body>
+  <header>
+    <img id="profilePic" src="profile.png" alt="Profile" />
+    <h1>Karre Sandeep</h1>
+    <p>AI & ML Enthusiast | Aspiring Software Engineer</p>
+
+    <!-- Dynamic Upload -->
+    <label class="upload-btn">
+      Change Photo
+      <input type="file" id="uploadInput" accept="image/*" style="display:none" />
+    </label>
+  </header>
+
+  <nav>
+    <button class="active" onclick="showTab('about', event)">About</button>
+    <button onclick="showTab('projects', event)">Projects</button>
+    <button onclick="showTab('skills', event)">Skills</button>
+    <button onclick="showTab('education', event)">Education</button>
+    <button onclick="showTab('contact', event)">Contact</button>
+  </nav>
+
+  <section id="about" class="active">
+    <h2>About Me</h2>
+    <p>
+      Enthusiastic learner with a strong foundation in Artificial Intelligence and Machine Learning. 
+      Adept at applying Python and SQL for data-driven problem-solving. 
+      Passionate about building real-world applications using modern ML and NLP techniques.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><b>Diagnosis Of Alzheimer’s Disease Using CNN:</b> Built a CNN model to detect Alzheimer’s from MRI scans and classify stages.</li>
+      <li><b>Grammar Correction Using NLP:</b> Developed a grammar correction system using BERT and sequence tagging to correct English sentences.</li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills" id="skillsList"></div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <ul>
+      <li><b>B.Tech in CSE (AIML)</b> - Malla Reddy College of Engineering & Technology, Hyderabad (2025) | CGPA: 7.38</li>
+      <li><b>Intermediate</b> - ABV Junior College, Jangaon (2021) | 97.4%</li>
+      <li><b>Secondary School</b> - Telangana State Model School, Jangaon (2019) | GPA: 9.7</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:sandeepkarre4@gmail.com">sandeepkarre4@gmail.com</a></p>
+    <p>Phone: <a href="tel:+919848514089">+91 98485 14089</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/sandeepkarre" target="_blank">linkedin.com/in/sandeepkarre</a></p>
+  </section>
+
+  <script>
+    // Tab navigation
+    function showTab(tabId, e) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      e.target.classList.add('active');
+    }
+
+    // Skills loaded dynamically
+    const skills = ["Python","Java","SQL","TensorFlow","PyTorch","Keras","OpenCV",
+                    "NLTK","Pandas","NumPy","Matplotlib","Git","Google Cloud","HTML/CSS"];
+    const skillsContainer = document.getElementById('skillsList');
+    skills.forEach(skill => {
+      let span = document.createElement('span');
+      span.textContent = skill;
+      skillsContainer.appendChild(span);
+    });
+
+    // Profile picture upload + persistence
+    const profilePic = document.getElementById('profilePic');
+    const uploadInput = document.getElementById('uploadInput');
+
+    // Load stored image if exists
+    const savedImg = localStorage.getItem('profilePic');
+    if(savedImg) profilePic.src = savedImg;
+
+    uploadInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if(file){
+        const reader = new FileReader();
+        reader.onload = function(evt){
+          profilePic.src = evt.target.result;
+          localStorage.setItem('profilePic', evt.target.result);
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
